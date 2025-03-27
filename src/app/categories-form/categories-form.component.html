@@ -1,0 +1,19 @@
+<div class="container flex m-2 p-3">
+  <h2 *ngIf="!isEdit">Add New Category</h2>
+  <h2 *ngIf="isEdit">Update Category</h2>
+  <form>
+    <mat-form-field style="width: 80%">
+      <mat-label *ngIf="!isEdit"> Add New Category </mat-label>
+      <mat-label *ngIf="isEdit"> Update Category </mat-label>
+      <input
+        matInput
+        name="name"
+        style="width: 100%"
+        [(ngModel)]="name"
+      /> </mat-form-field
+    ><br />
+    <button mat-stroked-button (click)="submit()" [disabled]="!name">
+      Submit
+    </button>
+  </form>
+</div>

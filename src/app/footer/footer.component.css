@@ -1,0 +1,16 @@
+.footer {
+  background-color: rgb(52, 102, 176);
+  color: #fff;
+  text-align: left;
+  padding: 10px;
+  font-size: 14px;
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+body {
+  padding-bottom: 40px;
+}

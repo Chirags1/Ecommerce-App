@@ -1,0 +1,66 @@
+<div class="container" style="padding-top: 30px">
+  <h2 *ngIf="!isEdit">Add Product Details</h2>
+  <h2 *ngIf="isEdit">Update Product Details</h2>
+  <br />
+
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <mat-form-field style="margin: 0px 30px 0px 0px">
+      <mat-select placeholder="Categories" formControlName="categoryId">
+        <mat-option *ngFor="let category of categories" [value]="category._id">
+          {{ category.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Brand" formControlName="brandId">
+        <mat-option *ngFor="let brand of brands" [value]="brand._id">
+          {{ brand.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>Product Name</mat-label>
+      <input matInput type="text" formControlName="productName" required />
+    </mat-form-field>
+    <mat-form-field class="w-100">
+      <mat-label>Short Description </mat-label>
+      <input matInput type="text" formControlName="shortDescription" />
+    </mat-form-field>
+    <mat-form-field class="w-100">
+      <mat-label>Description</mat-label>
+      <input matInput type="text" formControlName="description" />
+    </mat-form-field>
+    <mat-form-field class="w-100">
+      <mat-label>Price</mat-label>
+      <input matInput type="number" formControlName="price" />
+    </mat-form-field>
+    <mat-form-field class="w-100">
+      <mat-label>Discount</mat-label>
+      <input matInput type="number" formControlName="discount" />
+    </mat-form-field>
+
+    <div formArrayName="image">
+      <div
+        *ngFor="let image of images.controls; let i = index"
+        [formGroupName]="i"
+      >
+        <!-- <label for="image">Upload Image</label> -->
+        <input type="file" (change)="onFileChange($event, i)" />
+        <a mat-button (click)="removeImage(i)" style="color: red"
+          >Remove Image</a
+        >
+      </div>
+      <a mat-button (click)="addImage()" style="background-color: powderblue"
+        >Add Image</a
+      >
+    </div>
+    <mat-checkbox formControlName="isFeatured">Featured Product</mat-checkbox
+    ><br />
+    <mat-checkbox formControlName="IsNew">New Product</mat-checkbox><br />
+    <button mat-flat-button class="my-5" [disabled]="productForm.invalid">
+      <span *ngIf="!isEdit"> Add Product </span>
+      <span *ngIf="isEdit"> Update Product </span>
+    </button>
+  </form>
+</div>

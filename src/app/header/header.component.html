@@ -1,0 +1,27 @@
+<header style="background-color: rgb(52, 102, 176); margin-bottom: 100px">
+  <!-- Logo and Search Bar Section -->
+  <div class="logo-search-container">
+    <div class="logo">
+      <a href="#">SparkleNest</a>
+      <!-- Logo Text -->
+    </div>
+    <div class="search-bar">
+      <input
+        type="text"
+        id="search"
+        placeholder="Search for products..."
+        #searchInput
+      />
+      <button (click)="searchProducts(searchInput.value)">Search</button>
+    </div>
+  </div>
+
+  <!-- Categories Navigation Section -->
+  <nav class="navigation">
+    <ul class="category-list" *ngFor="let categories of category">
+      <li class="category-item">
+        <a href="#">{{ categories.name }}</a>
+      </li>
+    </ul>
+  </nav>
+</header>
